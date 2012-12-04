@@ -9,14 +9,15 @@ package jsmithaccounting;
  * @author JMARABLE
  */
 public class Account {
-  
-  String accName;
+  int accID;
+  private String accName;
   private int accBalance;
   
   
   public Account() {
+      accID = -1;
     accBalance = 0; //when creating new instance, set balnce to 0.
-    accName = new String(); //init new string
+    accName = "Account" ;//init new string
 }
   
  public int getBalance() { //retrieve the balance
@@ -31,5 +32,16 @@ public class Account {
  public void subtractBalance(int balanceSub) {
      accBalance = accBalance - balanceSub;
  }
- 
+ public void setAccName(String name) {
+    accName = name;
+    }
+ public String getAccName() {
+     return accName;
+ }
+ public void setAccId () {
+     accID++;
+ }
+ public int getAccId () {
+     return accID;
+ }
 }
