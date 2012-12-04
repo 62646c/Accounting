@@ -5,8 +5,10 @@
 package outgoings;
 
 import init.SQLiteConnection;
+import java.util.Date;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 /**
@@ -18,7 +20,9 @@ public class Outgoings {
     
     public Outgoings(boolean initFromDB){
         if(initFromDB == true){
+             items = new ArrayList<Item>();
             this.initFromDB();
+            
         } else {
             items = new ArrayList<Item>();
         }
@@ -36,8 +40,14 @@ public class Outgoings {
         tempItem.setWithdrawnDateBiYearly(i.getWithdrawnDateBiYearly());
         items.add(tempItem);
     }
+    public void displayItems(){
+        for(Item currentItem:items){
+            System.out.println(currentItem.getItemId() + " - " + currentItem.getItemName() );
+        }
+    }
     public void initFromDB(){
         //init from sql
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM");
         SQLiteConnection sqlc = new SQLiteConnection();
         if(sqlc.isSuccessfulConnection()){
          try{
@@ -47,14 +57,29 @@ public class Outgoings {
                 Item tempItem = new Item();
                 int currentId = allItems.getInt("id");
                 int isFinance = allItems.getInt("isFinance");
+                boolean isFinanced = false;
+                if(isFinance == 1){isFinanced = true;}
                 String itemName = allItems.getString("itemName");
                 int itemAmount = allItems.getInt("itemAmount");
                 int financeInterest = allItems.getInt("financeInterest");
+                Date withdrawDate = sdf.parse(allItems.getString("withdrawDate"));
+                Date withdrawDateBiYearly = sdf.parse(allItems.getString("withdrawDateBiYearly"));
                 
+                
+                tempItem.setItemId(currentId);
+                tempItem.setIsFinanced(isFinanced);
+                tempItem.setItemName(itemName);
+                tempItem.setItemAmount(itemAmount);
+                tempItem.setFinanceRate(financeInterest);
+                tempItem.setWithdrawnDate(withdrawDate);
+                tempItem.setWithdrawnDateBiYearly(withdrawDateBiYearly);
+                
+                items.add(tempItem);
             }
          }catch (Exception e){
              e.printStackTrace();
          }
+         this.displayItems();
         }
     }
     public void saveChangesToDB(){
