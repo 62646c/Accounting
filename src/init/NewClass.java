@@ -10,6 +10,7 @@ package init;
  */
 public class NewClass {
     public static void main(String[] args){
+        SQLiteSetup s = new SQLiteSetup();
         
     }
 }
