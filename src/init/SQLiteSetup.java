@@ -27,15 +27,15 @@ public class SQLiteSetup {
             conn = DriverManager.getConnection("jdbc:sqlite:./database/jsmith.db");
             Statement s = conn.createStatement();
             //Current Account init
-            s.executeUpdate("DROP Table Currentaccount");
-            s.executeUpdate("CREATE TABLE Currentaccount (AccountID INTEGER PRIMARY KEY, AccountName TEXT, AccountBalance NUMERIC);");
+            //s.executeUpdate("DROP Table Currentaccount");
+            //s.executeUpdate("CREATE TABLE Currentaccount (AccountID INTEGER PRIMARY KEY, AccountName TEXT, AccountBalance NUMERIC);");
             //Savings account
-            s.executeUpdate("DROP TABLE Savingsaccount");
-            s.executeUpdate("CREATE TABLE Savingsaccount (AccountID INTEGER PRIMARY KEY, Accountname TEXT, Accountbalance NUMERIC);");
+            //s.executeUpdate("DROP TABLE Savingsaccount");
+            //s.executeUpdate("CREATE TABLE Savingsaccount (AccountID INTEGER PRIMARY KEY, Accountname TEXT, Accountbalance NUMERIC);");
             //Items init
             s.executeUpdate("DROP TABLE Items");
-           s.executeUpdate("CREATE TABLE Items ( ID INTEGER PRIMARY KEY,isFinance NUMERIC, Itemname TEXT, Itemamount NUMERIC, Itemfreq NUMERIC, financeInterest NUMERIC, Withdrawndate TEXT, Withdrawndatebyyearly TEXT);");
-           
+            s.executeUpdate("CREATE TABLE Items (id INTEGER PRIMARY KEY, isFinance NUMERIC, itemName TEXT, itemAmount NUMERIC, itemFreq NUMERIC, financeInterest NUMERIC, withdrawDate TEXT, withdrawDateBiYearly TEXT);");
+            //s.executeUpdate("INSERT INTO ITEMS(isFinance, Itemname, Itemamount, Itemfreq, financeInterest, Withdrawndate, Withdrawndatebyyearly) VALUES ('0','Shoes and shit', '1042', '0' , '0', '04/12' , '') ");
         }catch (ClassNotFoundException e){
             System.out.println("Class not found exception");
             e.printStackTrace();

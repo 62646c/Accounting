@@ -18,7 +18,7 @@ public class Outgoings {
     
     public Outgoings(boolean initFromDB){
         if(initFromDB == true){
-            
+            this.initFromDB();
         } else {
             items = new ArrayList<Item>();
         }
@@ -43,6 +43,15 @@ public class Outgoings {
          try{
             Statement s = sqlc.getConnection().createStatement();
             ResultSet allItems = s.executeQuery("select * from Items");
+            while(allItems.next()){
+                Item tempItem = new Item();
+                int currentId = allItems.getInt("id");
+                int isFinance = allItems.getInt("isFinance");
+                String itemName = allItems.getString("itemName");
+                int itemAmount = allItems.getInt("itemAmount");
+                int financeInterest = allItems.getInt("financeInterest");
+                
+            }
          }catch (Exception e){
              e.printStackTrace();
          }
