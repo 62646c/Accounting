@@ -85,5 +85,61 @@ public class Item {
     public void setItemFrequency(String itemFrequency) {
         this.itemFrequency = itemFrequency;
     }
+
+    /**
+     * @return the isFinanced
+     */
+    public boolean isIsFinanced() {
+        return isFinanced;
+    }
+
+    /**
+     * @param isFinanced the isFinanced to set
+     */
+    public void setIsFinanced(boolean isFinanced) {
+        this.isFinanced = isFinanced;
+    }
+
+    /**
+     * @return the financeRate
+     */
+    public int getFinanceRate() {
+        return financeRate;
+    }
+
+    /**
+     * @param financeRate the financeRate to set
+     */
+    public void setFinanceRate(int financeRate) {
+        this.financeRate = financeRate;
+    }
+
+    /**
+     * @return the withdrawnDate
+     */
+    public Date getWithdrawnDate() {
+        return withdrawnDate;
+    }
+
+    /**
+     * @param withdrawnDate the withdrawnDate to set
+     */
+    public void setWithdrawnDate(Date withdrawnDate) {
+        this.withdrawnDate = withdrawnDate;
+    }
+
+    /**
+     * @return the withdrawnDateBiYearly
+     */
+    public Date getWithdrawnDateBiYearly() {
+        return withdrawnDateBiYearly;
+    }
+
+    /**
+     * @param withdrawnDateBiYearly the withdrawnDateBiYearly to set
+     */
+    public void setWithdrawnDateBiYearly(Date withdrawnDateBiYearly) {
+        this.withdrawnDateBiYearly = withdrawnDateBiYearly;
+    }
     
 }

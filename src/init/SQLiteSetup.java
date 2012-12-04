@@ -4,6 +4,7 @@
  */
 package init;
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -18,7 +19,12 @@ public class SQLiteSetup {
     public SQLiteSetup(){
         try{
             Class.forName("org.sqlite.JDBC");
-            conn = DriverManager.getConnection("jdbc:sqlite:./jsmith.db");
+            
+            File folder = new File("./database/");
+            folder.mkdir();
+            
+            
+            conn = DriverManager.getConnection("jdbc:sqlite:./database/jsmith.db");
             Statement s = conn.createStatement();
             //Current Account init
             s.executeUpdate("DROP Table Currentaccount");
