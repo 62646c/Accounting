@@ -20,8 +20,15 @@ public class SQLiteSetup {
             Class.forName("org.sqlite.JDBC");
             conn = DriverManager.getConnection("jdbc:sqlite:./jsmith.db");
             Statement s = conn.createStatement();
+            //Current Account init
+            s.executeUpdate("DROP Table Currentaccount");
+            s.executeUpdate("CREATE TABLE Currentaccount (AccountID INTEGER PRIMARY KEY, AccountName TEXT, AccountBalance NUMERIC);");
+            //Savings account
+            s.executeUpdate("DROP TABLE Savingsaccount");
+            s.executeUpdate("CREATE TABLE Savingsaccount (AccountID INTEGER PRIMARY KEY, Accountname TEXT, Accountbalance NUMERIC);");
+            //Items init
             s.executeUpdate("DROP TABLE Items");
-           s.executeUpdate("CREATE TABLE Items (ID INTEGER PRIMARY KEY, Itemname TEXT, Itemamount NUMERIC, Itemfreq NUMERIC, financeInterest NUMERIC, Withdrawndate TEXT, Withdrawndateyearly TEXT);");
+           s.executeUpdate("CREATE TABLE Items ( ID INTEGER PRIMARY KEY,isFinance NUMERIC, Itemname TEXT, Itemamount NUMERIC, Itemfreq NUMERIC, financeInterest NUMERIC, Withdrawndate TEXT, Withdrawndatebyyearly TEXT);");
            
         }catch (ClassNotFoundException e){
             System.out.println("Class not found exception");

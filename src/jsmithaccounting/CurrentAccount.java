@@ -11,5 +11,12 @@ import jsmithaccounting.Account;
  * @author JMARABLE
  */
 public class CurrentAccount extends Account {
-    
+    public CurrentAccount() {
+             if(initFromDB == true){
+            
+        } else {
+            items = new ArrayList<Item>();
+        }
+    }
+}
 }
