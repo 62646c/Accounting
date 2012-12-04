@@ -27,6 +27,9 @@ public class Outgoings {
             items = new ArrayList<Item>();
         }
     }
+    public ArrayList<Item> getItems(){
+        return items;
+    }
     public void add(Item i){
         //create temp varible to hold item and then
         Item tempItem = new Item();

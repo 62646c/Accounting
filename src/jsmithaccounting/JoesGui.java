@@ -4,11 +4,14 @@
  */
 package jsmithaccounting;
 
+import java.text.DecimalFormat;
+import javax.swing.DefaultListModel;
 import outgoings.Item;
+import outgoings.Outgoings;
 
 /**
  *
- * @author DBENTON
+ * @author DBENTON & BELAMBER
  */
 public class JoesGui extends javax.swing.JFrame {
 
@@ -18,7 +21,7 @@ public class JoesGui extends javax.swing.JFrame {
     public JoesGui() {
         initComponents();
     }
-
+    Outgoings o = new Outgoings(true);
      private void disableFinance(){
       financeCheck.setSelected(false);                                    //finance is unchecked
             financeCheck.setEnabled(false);                                    //and finance checkbox is disabled
@@ -126,7 +129,7 @@ public class JoesGui extends javax.swing.JFrame {
         jTabbedPane1.addTab("  Savings  ", savingsTab);
 
         outgoingsList.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Food", "Council Tax", "TV License", "Rent" };
+            String[] strings = { " " };
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
@@ -360,9 +363,19 @@ public class JoesGui extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void outgoingsListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_outgoingsListValueChanged
-        currentNameLabel.setText(outgoingsList.getSelectedValue().toString());
+        //currentNameLabel.setText(outgoingsList.getSelectedValue().toString());
+        int currentItemIndex = outgoingsList.getSelectedIndex();
+        Item currentSelectedItem = o.getItems().get(currentItemIndex);
+        currentNameLabel.setText(currentSelectedItem.getItemName());
+        int amountAsPence = currentSelectedItem.getItemAmount();
+       
+        amountField.setText(String.valueOf(amountAsPence));
+        
     }//GEN-LAST:event_outgoingsListValueChanged
-
+double roundTwoDecimals(double d) {
+            DecimalFormat twoDForm = new DecimalFormat("#.##");
+        return Double.valueOf(twoDForm.format(d));
+}
     private void yearlyWithdrawMonthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yearlyWithdrawMonthActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_yearlyWithdrawMonthActionPerformed
@@ -429,6 +442,14 @@ public class JoesGui extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
+    public void setupOutgoing(){
+        DefaultListModel d = new DefaultListModel();
+        
+        for(Item currentItem : o.getItems()){
+           d.add(currentItem.getItemId()-1, currentItem.getItemName());   
+        }
+        this.outgoingsList.setModel(d);
+    }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -454,10 +475,14 @@ public class JoesGui extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
+        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+               
                 new JoesGui().setVisible(true);
+                
             }
+            
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables

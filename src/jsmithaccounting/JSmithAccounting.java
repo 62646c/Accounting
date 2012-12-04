@@ -14,6 +14,8 @@ public class JSmithAccounting {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-      
+      JoesGui g = new JoesGui();
+      g.setVisible(true);
+      g.setupOutgoing();
     }
 }
