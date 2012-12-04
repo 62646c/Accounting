@@ -11,6 +11,5 @@ package outgoings;
 public class Test {
     public static void main(String[] args){
         Outgoings o = new Outgoings(true);
-        
     }
 }
