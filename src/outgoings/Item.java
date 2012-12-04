@@ -4,6 +4,8 @@
  */
 package outgoings;
 
+import java.sql.Date;
+
 /**
  *
  * @author BELAMBER
@@ -13,12 +15,19 @@ public class Item {
     private String itemName;
     private int itemAmount;
     private String itemFrequency;
-    
+    private boolean isFinanced;
+    private int financeRate;
+    private Date withdrawnDate;
+    private Date withdrawnDateBiYearly;
     public Item(){
        itemId = -1;
        itemName = "n/a";
        itemAmount = -1;
        itemFrequency = "n/a"; 
+       isFinanced = false;
+       financeRate = -1;
+       withdrawnDate = null;
+       withdrawnDateBiYearly = null;
     }
 
     /**

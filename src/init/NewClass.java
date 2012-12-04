@@ -8,8 +8,8 @@ package init;
  *
  * @author BELAMBER
  */
-public class PostgresInit {
-    public PostgresInit(){
+public class NewClass {
+    public static void main(String[] args){
         
     }
 }
