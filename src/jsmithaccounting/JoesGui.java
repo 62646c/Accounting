@@ -418,8 +418,10 @@ public class JoesGui extends javax.swing.JFrame {
         } else if(currentSelectedItem.getItemFrequency().equals("6")){
             halfYearButton.setSelected(true);
         } else if(currentSelectedItem.getItemFrequency().equals("0")){
-            
+          System.out.println("Item should not exist");  
         }
+        
+        financeCheck.setSelected(currentSelectedItem.isIsFinanced());
         
     }//GEN-LAST:event_outgoingsListValueChanged
 String roundTwoDecimals(double d) {
