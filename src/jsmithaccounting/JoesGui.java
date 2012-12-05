@@ -19,10 +19,12 @@ public class JoesGui extends javax.swing.JFrame {
     /**
      * Creates new form JoesGui
      */
+    public Outgoings o;
     public JoesGui() {
         initComponents();
+        o = new Outgoings(true);
     }
-    Outgoings o = new Outgoings(true);
+   
      private void disableFinance(){
       financeCheck.setSelected(false);                                    //finance is unchecked
             financeCheck.setEnabled(false);                                    //and finance checkbox is disabled
@@ -403,8 +405,22 @@ public class JoesGui extends javax.swing.JFrame {
         amountField.setText(amountAsPounds);
         
         SimpleDateFormat f = new SimpleDateFormat("MMMM");
+        SimpleDateFormat d = new SimpleDateFormat("d");
         yearlyWithdrawMonth.setSelectedItem(f.format(currentSelectedItem.getWithdrawnDate()));
-        date1Day.setSelectedItem(currentSelectedItem.getWithdrawnDate().getDay());
+        
+        date1Day.setSelectedItem(d.format(currentSelectedItem.getWithdrawnDate()));
+        
+        
+        if(currentSelectedItem.getItemFrequency().equals("1")){
+            yearlyButton.setSelected(true);
+        } else if(currentSelectedItem.getItemFrequency().equals("12")) {
+            monthlyButton.setSelected(true);
+        } else if(currentSelectedItem.getItemFrequency().equals("6")){
+            halfYearButton.setSelected(true);
+        } else if(currentSelectedItem.getItemFrequency().equals("0")){
+            
+        }
+        
     }//GEN-LAST:event_outgoingsListValueChanged
 String roundTwoDecimals(double d) {
             DecimalFormat twoDForm = new DecimalFormat("#.##");

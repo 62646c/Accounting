@@ -35,8 +35,8 @@ public class SQLiteSetup {
             //Items init
             s.executeUpdate("DROP TABLE Items");
             s.executeUpdate("CREATE TABLE Items (id INTEGER PRIMARY KEY, isFinance NUMERIC, itemName TEXT, itemAmount NUMERIC, itemFreq NUMERIC, financeInterest NUMERIC, withdrawDate TEXT, withdrawDateBiYearly TEXT);");
-            s.executeUpdate("INSERT INTO ITEMS(isFinance, itemName, itemAmount, itemFreq, financeInterest, withdrawDate, withdrawDateBiYearly) VALUES ('0','Shoes and Stuff','1232','0','0','5/12','5/12')");
-            s.executeUpdate("INSERT INTO ITEMS(isFinance, itemName, itemAmount, itemFreq, financeInterest, withdrawDate, withdrawDateBiYearly) VALUES ('0','Shoes and Shit','1232','0','0','5/12','5/12')");
+            s.executeUpdate("INSERT INTO ITEMS(isFinance, itemName, itemAmount, itemFreq, financeInterest, withdrawDate, withdrawDateBiYearly) VALUES ('0','Phone Bill','1500','0','0','5/12','5/12')");
+            s.executeUpdate("INSERT INTO ITEMS(isFinance, itemName, itemAmount, itemFreq, financeInterest, withdrawDate, withdrawDateBiYearly) VALUES ('1','Food','1332','12','0','20/01','20/01')");
             
             //s.executeUpdate("INSERT INTO ITEMS(isFinance, Itemname, Itemamount, Itemfreq, financeInterest, Withdrawndate, Withdrawndatebyyearly) VALUES ('0','Shoes and shit', '1042', '0' , '0', '04/12' , '') ");
         }catch (ClassNotFoundException e){

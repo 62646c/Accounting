@@ -56,6 +56,7 @@ public class Outgoings {
          try{
             Statement s = sqlc.getConnection().createStatement();
             ResultSet allItems = s.executeQuery("select * from Items");
+            
             while(allItems.next()){
                 Item tempItem = new Item();
                 int currentId = allItems.getInt("id");
@@ -67,7 +68,7 @@ public class Outgoings {
                 int financeInterest = allItems.getInt("financeInterest");
                 Date withdrawDate = sdf.parse(allItems.getString("withdrawDate"));
                 Date withdrawDateBiYearly = sdf.parse(allItems.getString("withdrawDateBiYearly"));
-                
+                String itemFreq = allItems.getString("itemFreq");
                 
                 tempItem.setItemId(currentId);
                 tempItem.setIsFinanced(isFinanced);
@@ -76,6 +77,9 @@ public class Outgoings {
                 tempItem.setFinanceRate(financeInterest);
                 tempItem.setWithdrawnDate(withdrawDate);
                 tempItem.setWithdrawnDateBiYearly(withdrawDateBiYearly);
+                tempItem.setItemFrequency(itemFreq);
+                
+                
                 
                 items.add(tempItem);
             }
