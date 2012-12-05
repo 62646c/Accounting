@@ -5,6 +5,7 @@
 package jsmithaccounting;
 
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import javax.swing.DefaultListModel;
 import outgoings.Item;
 import outgoings.Outgoings;
@@ -368,13 +369,17 @@ public class JoesGui extends javax.swing.JFrame {
         Item currentSelectedItem = o.getItems().get(currentItemIndex);
         currentNameLabel.setText(currentSelectedItem.getItemName());
         int amountAsPence = currentSelectedItem.getItemAmount();
-       
-        amountField.setText(String.valueOf(amountAsPence));
+        String amountAsPounds = roundTwoDecimals((double) amountAsPence / 100);
         
+        amountField.setText(amountAsPounds);
+        
+        SimpleDateFormat f = new SimpleDateFormat("MMMM");
+        yearlyWithdrawMonth.setSelectedItem(f.format(currentSelectedItem.getWithdrawnDate()));
+        date1Day.setSelectedItem(currentSelectedItem.getWithdrawnDate().getDay());
     }//GEN-LAST:event_outgoingsListValueChanged
-double roundTwoDecimals(double d) {
+String roundTwoDecimals(double d) {
             DecimalFormat twoDForm = new DecimalFormat("#.##");
-        return Double.valueOf(twoDForm.format(d));
+        return String.valueOf(twoDForm.format(d));
 }
     private void yearlyWithdrawMonthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yearlyWithdrawMonthActionPerformed
         // TODO add your handling code here:
