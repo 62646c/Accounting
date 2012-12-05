@@ -70,6 +70,9 @@ public class JoesGui extends javax.swing.JFrame {
         monthlyCostLabel = new javax.swing.JLabel();
         yearlyCostLabel = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        yearsMonthsCombo = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -157,6 +160,7 @@ public class JoesGui extends javax.swing.JFrame {
         freqLabel.setText("Frequency:");
 
         buttonGroup1.add(yearlyButton);
+        yearlyButton.setSelected(true);
         yearlyButton.setText("Yearly");
         yearlyButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -203,6 +207,7 @@ public class JoesGui extends javax.swing.JFrame {
         });
 
         yearlyWithdrawMonth1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" }));
+        yearlyWithdrawMonth1.setEnabled(false);
         yearlyWithdrawMonth1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 yearlyWithdrawMonth1ActionPerformed(evt);
@@ -216,9 +221,11 @@ public class JoesGui extends javax.swing.JFrame {
         date1Day.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
 
         date2Day.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
+        date2Day.setEnabled(false);
 
         andLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         andLabel.setText("and:");
+        andLabel.setEnabled(false);
 
         monthlyCostLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         monthlyCostLabel.setText("Monthly Cost: £0.00");
@@ -227,6 +234,13 @@ public class JoesGui extends javax.swing.JFrame {
         yearlyCostLabel.setText("Total Yearly Cost: £0.00");
 
         jLabel1.setText("Day of each month");
+        jLabel1.setEnabled(false);
+
+        jLabel2.setText("Ending after:");
+
+        jTextField1.setText("1");
+
+        yearsMonthsCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Months", "Years" }));
 
         javax.swing.GroupLayout recurringTabLayout = new javax.swing.GroupLayout(recurringTab);
         recurringTab.setLayout(recurringTabLayout);
@@ -251,46 +265,54 @@ public class JoesGui extends javax.swing.JFrame {
                         .addComponent(deleteButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(saveButton))
-                    .addGroup(recurringTabLayout.createSequentialGroup()
-                        .addComponent(freqLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(recurringTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(recurringTabLayout.createSequentialGroup()
-                                .addComponent(financeCheck)
-                                .addGap(18, 18, 18)
-                                .addComponent(interestLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(interestField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(recurringTabLayout.createSequentialGroup()
-                                .addComponent(yearlyButton)
-                                .addGap(18, 18, 18)
-                                .addComponent(halfYearButton)
-                                .addGap(18, 18, 18)
-                                .addComponent(monthlyButton))
-                            .addGroup(recurringTabLayout.createSequentialGroup()
-                                .addGroup(recurringTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(withdrawnLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(andLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(18, 18, 18)
-                                .addGroup(recurringTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(recurringTabLayout.createSequentialGroup()
-                                        .addComponent(yearlyWithdrawMonth1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(date2Day, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(recurringTabLayout.createSequentialGroup()
-                                        .addComponent(yearlyWithdrawMonth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(date1Day, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jLabel1)))))
-                        .addGap(0, 29, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, recurringTabLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(recurringTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(totalOutgoings, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, recurringTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(monthlyCostLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(yearlyCostLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)))))
+                                .addComponent(yearlyCostLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(recurringTabLayout.createSequentialGroup()
+                        .addGroup(recurringTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(recurringTabLayout.createSequentialGroup()
+                                .addComponent(freqLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(recurringTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(recurringTabLayout.createSequentialGroup()
+                                        .addComponent(financeCheck)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(interestLabel)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(interestField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(recurringTabLayout.createSequentialGroup()
+                                        .addComponent(yearlyButton)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(halfYearButton)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(monthlyButton))
+                                    .addGroup(recurringTabLayout.createSequentialGroup()
+                                        .addGroup(recurringTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(withdrawnLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(andLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(recurringTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(recurringTabLayout.createSequentialGroup()
+                                                .addComponent(yearlyWithdrawMonth1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(date2Day, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(recurringTabLayout.createSequentialGroup()
+                                                .addComponent(yearlyWithdrawMonth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(date1Day, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(jLabel1))))))
+                            .addGroup(recurringTabLayout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(yearsMonthsCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 29, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         recurringTabLayout.setVerticalGroup(
@@ -334,11 +356,16 @@ public class JoesGui extends javax.swing.JFrame {
                             .addComponent(yearlyWithdrawMonth1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(date2Day, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(andLabel))
-                        .addGap(14, 14, 14)
+                        .addGap(18, 18, 18)
+                        .addGroup(recurringTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(yearsMonthsCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(yearlyCostLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(monthlyCostLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
                         .addComponent(totalOutgoings)))
                 .addContainerGap())
         );
@@ -359,6 +386,8 @@ public class JoesGui extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+   
+    
     private void outgoingsListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_outgoingsListValueChanged
         currentNameLabel.setText(outgoingsList.getSelectedValue().toString());
     }//GEN-LAST:event_outgoingsListValueChanged
@@ -477,11 +506,13 @@ public class JoesGui extends javax.swing.JFrame {
     private javax.swing.JTextField interestField;
     private javax.swing.JLabel interestLabel;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JRadioButton monthlyButton;
     private javax.swing.JLabel monthlyCostLabel;
     private javax.swing.JTextField newOutgoing;
@@ -495,5 +526,6 @@ public class JoesGui extends javax.swing.JFrame {
     private javax.swing.JLabel yearlyCostLabel;
     private javax.swing.JComboBox yearlyWithdrawMonth;
     private javax.swing.JComboBox yearlyWithdrawMonth1;
+    private javax.swing.JComboBox yearsMonthsCombo;
     // End of variables declaration//GEN-END:variables
 }
